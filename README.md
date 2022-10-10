@@ -1,8 +1,4 @@
-# Basic-Scrpaer
+# Fly-Under-100
 
-# Scripts:  
-running the server:   
-nodemon
-
-create a pkg file that can work with puppeteer and only for windows and node12 versions:  
-pkg index.js --target node12-win-x64 --public
+Basic scraper to get flights under 100 dollars, you can also pass maxPrice as a query paramater to get flights for different max price.
+`

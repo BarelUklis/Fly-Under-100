@@ -11,7 +11,7 @@ const {
     flightDurationSelector
 } = require("./selectors");
 
-const getFlights = async (priceRange = 100) => {
+const getFlights = async (maxPrice = 100) => {
     const headless = true;
     const url = 'https://www.google.com/travel/explore?curr=USD&hl=en-US';
 
@@ -56,7 +56,7 @@ const getFlights = async (priceRange = 100) => {
 
     const filterdFlights = flights.filter(flight => {
         const priceClean = flight.price.replace(/[^0-9]/g, '');
-        return priceClean < priceRange;
+        return priceClean < maxPrice;
     });
 
     return {

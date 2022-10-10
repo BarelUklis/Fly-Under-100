@@ -4,7 +4,7 @@ const writeToFile = require('./middleware/writeCalls');
 const getFlights = require("./flightScraper");
 app.use(express.static("public"));
 app.get("/api/flights", (req, res) => {
-  const priceRange = req?.query?.priceRange;
+  const priceRange = req?.query?.maxPrice;
   getFlights(priceRange).then((flights) => {
     res.send(flights);
     writeToFile();

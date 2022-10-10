@@ -1,11 +1,11 @@
 const puppeteer = require("puppeteer");
 
 class Browser {
-    constructor(chromePath) {
+    constructor(headless = true) {
       const launch_browser = async () => {
         this.browser = false;
         this.browser = await puppeteer.launch({
-          headless: true,
+          headless: headless,
           args: [
             "--no-sandbox",
             "--disable-setuid-sandbox",
@@ -14,7 +14,6 @@ class Browser {
             "--disable-gpu",
             "--shm-size=3gb",
           ],
-          executablePath: chromePath,
           ignoreHTTPSErrors: true
         });
       };
@@ -37,8 +36,8 @@ const wait_for_browser = (browser_handler) =>
 });
 
 // open browser (on)
-const openBrowser = async (path) => {
-    const preperBrowser = new Browser(path);
+const openBrowser = async (headless) => {
+    const preperBrowser = new Browser(headless);
   
     await wait_for_browser(preperBrowser);
   
